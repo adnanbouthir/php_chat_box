@@ -18,7 +18,7 @@
         
         ?>
         <h2><?php echo $_GET['empty']; ?></h2> <?php } ?>
-        <form action="traiement.php" method="post">
+        <form action="traitement.php" method="post">
             <div class="txt_field">
                 <input type="text" name="username" id="" required>
                 <span></span>
@@ -30,7 +30,7 @@
                 <label>password</label>
             </div>
             
-            <input type="submit" name="login">
+            <input type="submit" name="login" value="Login">
             <div class="signup_link">
                 not a member ? <a href="signup.php">Sign up</a>
             </div>
