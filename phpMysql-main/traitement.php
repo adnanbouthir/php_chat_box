@@ -55,7 +55,7 @@ if (isset($_POST['login'])) {
        echo "login success";
         // header("location: index.php");
    }else{
-       echo "zid t9wd";
+       echo "login failed";
     // header("location: login.php?empty='password or user wrong'");
    }
 }
