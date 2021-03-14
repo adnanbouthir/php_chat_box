@@ -1,4 +1,5 @@
 <?php
+session_start();
     include_once('database.php');
 
     //selectionner les message dans la base de donnée
@@ -7,10 +8,7 @@
     $messages = mysqli_fetch_assoc($results);
 
 
-    if (isset($_POST['envoyer'])) {
-        $user = $_POST['utilisateur'];
-        $msg =  $_POST['message'];
-    }
+ if(isset($_SESSION['username'])){
    
 ?>
 <!DOCTYPE html>
@@ -32,7 +30,7 @@
 <body>
     <main>
         <div class="titleBar container">
-            <h1>Welcome User</h1>
+            <h1>Welcome <?php echo $_SESSION['username'] ?></h1>
         </div>
         <div class="messages container">
             <ul>
@@ -45,16 +43,19 @@
         </div>
         <div class="row g-3">
             <form class="row g-3" action="traitement.php" method="post">
-                <div class="col">
-                    <input type="text" name="utilisateur" class="form-control" placeholder="Username" aria-label="First name">
-                </div>
+                
                 <div class="col">
                 <input type="text" name="message" class= "form-control"  placeholder="Saisir votre message">
                 </div>
                 
                 <input type="submit" class="btn btn-outline-info" name="envoyer" value="Envoyer">
+                <div class="col">
+        <input type="submit" name="logout" class="btn btn-outline-info" value="logout">
+        </div>
             </form>
         </div>
+
+        
     </main>
 
     <!-- Bootstrap Bundle with Popper -->
@@ -65,3 +66,8 @@
 </body>
 
 </html>
+
+
+<?php  }else{
+    header("location: login.php");
+} ?>
